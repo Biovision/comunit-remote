@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: comunit_remote
+  #username: test_app
+  #password:
+  #host: localhost
+  #port: 5432
+  #schema_search_path: myapp,sharedapp,public
+  #min_messages: notice
+
+test:
+  <<: *default
+  database: comunit_remote_test
+
+production:
+  <<: *default
+  database: comunit_remote
+  username: comunit_remote
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: localhost
